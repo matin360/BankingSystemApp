@@ -1,6 +1,6 @@
-﻿namespace BakingSystemUI
+﻿namespace BakingSystemUI.Forms
 {
-	partial class MainFrom
+	partial class UserForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -30,14 +30,14 @@
 		{
 			this.SuspendLayout();
 			// 
-			// MainFrom
+			// UserForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(538, 261);
+			this.ClientSize = new System.Drawing.Size(543, 347);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Name = "MainFrom";
-			this.Text = "BankingSystem";
+			this.Name = "UserForm";
+			this.Text = "UserForm";
 			this.ResumeLayout(false);
 
 		}
@@ -45,4 +45,3 @@
 		#endregion
 	}
 }
-
