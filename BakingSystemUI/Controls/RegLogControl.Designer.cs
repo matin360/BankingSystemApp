@@ -38,7 +38,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(22, 39);
+			this.label1.Location = new System.Drawing.Point(3, 9);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(32, 13);
 			this.label1.TabIndex = 3;
@@ -46,7 +46,7 @@
 			// 
 			// txbx_email
 			// 
-			this.txbx_email.Location = new System.Drawing.Point(25, 65);
+			this.txbx_email.Location = new System.Drawing.Point(6, 35);
 			this.txbx_email.Name = "txbx_email";
 			this.txbx_email.Size = new System.Drawing.Size(157, 20);
 			this.txbx_email.TabIndex = 2;
@@ -54,7 +54,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(22, 98);
+			this.label2.Location = new System.Drawing.Point(3, 68);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(53, 13);
 			this.label2.TabIndex = 5;
@@ -62,14 +62,14 @@
 			// 
 			// txbx_password
 			// 
-			this.txbx_password.Location = new System.Drawing.Point(25, 124);
+			this.txbx_password.Location = new System.Drawing.Point(6, 94);
 			this.txbx_password.Name = "txbx_password";
 			this.txbx_password.Size = new System.Drawing.Size(157, 20);
 			this.txbx_password.TabIndex = 4;
 			// 
 			// btn_submit
 			// 
-			this.btn_submit.Location = new System.Drawing.Point(65, 168);
+			this.btn_submit.Location = new System.Drawing.Point(46, 138);
 			this.btn_submit.Name = "btn_submit";
 			this.btn_submit.Size = new System.Drawing.Size(75, 23);
 			this.btn_submit.TabIndex = 6;
@@ -86,7 +86,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.txbx_email);
 			this.Name = "RegLogControl";
-			this.Size = new System.Drawing.Size(212, 220);
+			this.Size = new System.Drawing.Size(166, 165);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

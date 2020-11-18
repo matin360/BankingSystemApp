@@ -1,6 +1,6 @@
 ﻿namespace BakingSystemUI.Forms
 {
-	partial class CardManagerForm
+	partial class CardsForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,43 +29,69 @@
 		private void InitializeComponent()
 		{
 			this.grbx_card = new System.Windows.Forms.GroupBox();
+			this.txbx_type = new System.Windows.Forms.TextBox();
+			this.txbx_duration = new System.Windows.Forms.TextBox();
+			this.txbx_bank = new System.Windows.Forms.TextBox();
 			this.btn_order = new System.Windows.Forms.Button();
-			this.cmbx_duratoin = new System.Windows.Forms.ComboBox();
-			this.cmbx_type = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txbx_expDate = new System.Windows.Forms.TextBox();
 			this.txbx_cvc = new System.Windows.Forms.TextBox();
 			this.txbx_cardNumber = new System.Windows.Forms.TextBox();
-			this.cmbx_bank = new System.Windows.Forms.ComboBox();
 			this.lbl_expDate = new System.Windows.Forms.Label();
 			this.lbl_cvc = new System.Windows.Forms.Label();
 			this.lbl_cardNumber = new System.Windows.Forms.Label();
 			this.lbl_bank = new System.Windows.Forms.Label();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.grbx_card.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// grbx_card
 			// 
+			this.grbx_card.Controls.Add(this.txbx_type);
+			this.grbx_card.Controls.Add(this.txbx_duration);
+			this.grbx_card.Controls.Add(this.txbx_bank);
 			this.grbx_card.Controls.Add(this.btn_order);
-			this.grbx_card.Controls.Add(this.cmbx_duratoin);
-			this.grbx_card.Controls.Add(this.cmbx_type);
 			this.grbx_card.Controls.Add(this.label2);
 			this.grbx_card.Controls.Add(this.label1);
 			this.grbx_card.Controls.Add(this.txbx_expDate);
 			this.grbx_card.Controls.Add(this.txbx_cvc);
 			this.grbx_card.Controls.Add(this.txbx_cardNumber);
-			this.grbx_card.Controls.Add(this.cmbx_bank);
 			this.grbx_card.Controls.Add(this.lbl_expDate);
 			this.grbx_card.Controls.Add(this.lbl_cvc);
 			this.grbx_card.Controls.Add(this.lbl_cardNumber);
 			this.grbx_card.Controls.Add(this.lbl_bank);
-			this.grbx_card.Location = new System.Drawing.Point(22, 23);
+			this.grbx_card.Location = new System.Drawing.Point(496, 13);
 			this.grbx_card.Name = "grbx_card";
 			this.grbx_card.Size = new System.Drawing.Size(288, 271);
-			this.grbx_card.TabIndex = 3;
+			this.grbx_card.TabIndex = 5;
 			this.grbx_card.TabStop = false;
 			this.grbx_card.Text = "Card";
+			// 
+			// txbx_type
+			// 
+			this.txbx_type.Enabled = false;
+			this.txbx_type.Location = new System.Drawing.Point(97, 87);
+			this.txbx_type.Name = "txbx_type";
+			this.txbx_type.Size = new System.Drawing.Size(185, 20);
+			this.txbx_type.TabIndex = 9;
+			// 
+			// txbx_duration
+			// 
+			this.txbx_duration.Enabled = false;
+			this.txbx_duration.Location = new System.Drawing.Point(97, 55);
+			this.txbx_duration.Name = "txbx_duration";
+			this.txbx_duration.Size = new System.Drawing.Size(185, 20);
+			this.txbx_duration.TabIndex = 8;
+			// 
+			// txbx_bank
+			// 
+			this.txbx_bank.Enabled = false;
+			this.txbx_bank.Location = new System.Drawing.Point(97, 19);
+			this.txbx_bank.Name = "txbx_bank";
+			this.txbx_bank.Size = new System.Drawing.Size(185, 20);
+			this.txbx_bank.TabIndex = 7;
 			// 
 			// btn_order
 			// 
@@ -75,31 +101,6 @@
 			this.btn_order.TabIndex = 3;
 			this.btn_order.Text = "Order";
 			this.btn_order.UseVisualStyleBackColor = true;
-			// 
-			// cmbx_duratoin
-			// 
-			this.cmbx_duratoin.FormattingEnabled = true;
-			this.cmbx_duratoin.Items.AddRange(new object[] {
-            "1 year",
-            "2 years",
-            "5 years",
-            "10 years"});
-			this.cmbx_duratoin.Location = new System.Drawing.Point(97, 54);
-			this.cmbx_duratoin.Name = "cmbx_duratoin";
-			this.cmbx_duratoin.Size = new System.Drawing.Size(185, 21);
-			this.cmbx_duratoin.TabIndex = 9;
-			// 
-			// cmbx_type
-			// 
-			this.cmbx_type.FormattingEnabled = true;
-			this.cmbx_type.Items.AddRange(new object[] {
-            "Salary Card",
-            "Debet Card",
-            "Scolarship Card"});
-			this.cmbx_type.Location = new System.Drawing.Point(97, 86);
-			this.cmbx_type.Name = "cmbx_type";
-			this.cmbx_type.Size = new System.Drawing.Size(185, 21);
-			this.cmbx_type.TabIndex = 8;
 			// 
 			// label2
 			// 
@@ -145,20 +146,6 @@
 			this.txbx_cardNumber.Size = new System.Drawing.Size(185, 20);
 			this.txbx_cardNumber.TabIndex = 3;
 			// 
-			// cmbx_bank
-			// 
-			this.cmbx_bank.FormattingEnabled = true;
-			this.cmbx_bank.Items.AddRange(new object[] {
-            "Kapital Bank",
-            "Express Bank",
-            "BTB Bank",
-            "Yellow Bank",
-            "Beynalxalq Bank"});
-			this.cmbx_bank.Location = new System.Drawing.Point(97, 24);
-			this.cmbx_bank.Name = "cmbx_bank";
-			this.cmbx_bank.Size = new System.Drawing.Size(185, 21);
-			this.cmbx_bank.TabIndex = 3;
-			// 
 			// lbl_expDate
 			// 
 			this.lbl_expDate.AutoSize = true;
@@ -196,17 +183,27 @@
 			this.lbl_bank.TabIndex = 0;
 			this.lbl_bank.Text = "Bank:";
 			// 
-			// CardManagerForm
+			// dataGridView1
+			// 
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Location = new System.Drawing.Point(16, 1);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.Size = new System.Drawing.Size(437, 449);
+			this.dataGridView1.TabIndex = 4;
+			// 
+			// CardsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(328, 326);
+			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(this.grbx_card);
+			this.Controls.Add(this.dataGridView1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Name = "CardManagerForm";
-			this.Text = "CardManagerForm";
+			this.Name = "CardsForm";
+			this.Text = "CardsForm";
 			this.grbx_card.ResumeLayout(false);
 			this.grbx_card.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -214,18 +211,19 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox grbx_card;
+		private System.Windows.Forms.TextBox txbx_type;
+		private System.Windows.Forms.TextBox txbx_duration;
+		private System.Windows.Forms.TextBox txbx_bank;
 		private System.Windows.Forms.Button btn_order;
-		private System.Windows.Forms.ComboBox cmbx_duratoin;
-		private System.Windows.Forms.ComboBox cmbx_type;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txbx_expDate;
 		private System.Windows.Forms.TextBox txbx_cvc;
 		private System.Windows.Forms.TextBox txbx_cardNumber;
-		private System.Windows.Forms.ComboBox cmbx_bank;
 		private System.Windows.Forms.Label lbl_expDate;
 		private System.Windows.Forms.Label lbl_cvc;
 		private System.Windows.Forms.Label lbl_cardNumber;
 		private System.Windows.Forms.Label lbl_bank;
+		private System.Windows.Forms.DataGridView dataGridView1;
 	}
 }
