@@ -52,6 +52,8 @@
     <Compile Include="Controls\RegLogControl.Designer.cs">
       <DependentUpon>RegLogControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\DbContext.cs" />
+    <Compile Include="Data\DbSet.cs" />
     <Compile Include="Forms\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,8 +142,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
