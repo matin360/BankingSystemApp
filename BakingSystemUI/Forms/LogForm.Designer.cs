@@ -1,6 +1,6 @@
 ﻿namespace BakingSystemUI
 {
-	partial class MainFrom
+	partial class LogForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -30,15 +30,15 @@
 		{
 			this.grbx_log = new System.Windows.Forms.GroupBox();
 			this.grbx_reg = new System.Windows.Forms.GroupBox();
-			this.regLogControl1 = new BakingSystemUI.Controls.RegLogControl();
-			this.regLogControl2 = new BakingSystemUI.Controls.RegLogControl();
+			this.logControl = new BakingSystemUI.Controls.RegLogControl();
+			this.regControl = new BakingSystemUI.Controls.RegLogControl();
 			this.grbx_log.SuspendLayout();
 			this.grbx_reg.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// grbx_log
 			// 
-			this.grbx_log.Controls.Add(this.regLogControl1);
+			this.grbx_log.Controls.Add(this.logControl);
 			this.grbx_log.Location = new System.Drawing.Point(280, 7);
 			this.grbx_log.Name = "grbx_log";
 			this.grbx_log.Size = new System.Drawing.Size(256, 247);
@@ -48,7 +48,7 @@
 			// 
 			// grbx_reg
 			// 
-			this.grbx_reg.Controls.Add(this.regLogControl2);
+			this.grbx_reg.Controls.Add(this.regControl);
 			this.grbx_reg.Location = new System.Drawing.Point(3, 7);
 			this.grbx_reg.Name = "grbx_reg";
 			this.grbx_reg.Size = new System.Drawing.Size(256, 247);
@@ -56,21 +56,21 @@
 			this.grbx_reg.TabStop = false;
 			this.grbx_reg.Text = "Register";
 			// 
-			// regLogControl1
+			// logControl
 			// 
-			this.regLogControl1.Location = new System.Drawing.Point(18, 19);
-			this.regLogControl1.Name = "regLogControl1";
-			this.regLogControl1.Size = new System.Drawing.Size(212, 220);
-			this.regLogControl1.TabIndex = 0;
+			this.logControl.Location = new System.Drawing.Point(42, 46);
+			this.logControl.Name = "logControl";
+			this.logControl.Size = new System.Drawing.Size(166, 165);
+			this.logControl.TabIndex = 1;
 			// 
-			// regLogControl2
+			// regControl
 			// 
-			this.regLogControl2.Location = new System.Drawing.Point(22, 19);
-			this.regLogControl2.Name = "regLogControl2";
-			this.regLogControl2.Size = new System.Drawing.Size(212, 220);
-			this.regLogControl2.TabIndex = 1;
+			this.regControl.Location = new System.Drawing.Point(41, 46);
+			this.regControl.Name = "regControl";
+			this.regControl.Size = new System.Drawing.Size(166, 165);
+			this.regControl.TabIndex = 0;
 			// 
-			// MainFrom
+			// LogForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,7 +78,7 @@
 			this.Controls.Add(this.grbx_log);
 			this.Controls.Add(this.grbx_reg);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Name = "MainFrom";
+			this.Name = "LogForm";
 			this.Text = "BankingSystem";
 			this.grbx_log.ResumeLayout(false);
 			this.grbx_reg.ResumeLayout(false);
@@ -89,9 +89,9 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox grbx_log;
-		private Controls.RegLogControl regLogControl1;
 		private System.Windows.Forms.GroupBox grbx_reg;
-		private Controls.RegLogControl regLogControl2;
+		private Controls.RegLogControl logControl;
+		private Controls.RegLogControl regControl;
 	}
 }
 

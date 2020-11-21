@@ -95,9 +95,9 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox txbx_email;
+		public System.Windows.Forms.TextBox txbx_email;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox txbx_password;
-		private System.Windows.Forms.Button btn_submit;
+		public System.Windows.Forms.TextBox txbx_password;
+		public System.Windows.Forms.Button btn_submit;
 	}
 }
