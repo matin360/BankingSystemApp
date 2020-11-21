@@ -52,6 +52,7 @@
     <Compile Include="Controls\RegLogControl.Designer.cs">
       <DependentUpon>RegLogControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Session.cs" />
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Data\DbSet.cs" />
     <Compile Include="Forms\AdminForm.cs">
@@ -99,6 +100,8 @@
     <Compile Include="Roles\BankName.cs" />
     <Compile Include="Roles\CardType.cs" />
     <Compile Include="Roles\DurationType.cs" />
+    <Compile Include="Roles\UserType.cs" />
+    <Compile Include="Validation\Validator.cs" />
     <EmbeddedResource Include="Controls\RegLogControl.resx">
       <DependentUpon>RegLogControl.cs</DependentUpon>
     </EmbeddedResource>
