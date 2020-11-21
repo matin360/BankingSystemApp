@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BakingSystemUI.Forms
 {
-	public partial class UserForm : Form
+	public partial class MainForm : Form
 	{
-		public UserForm()
+		public MainForm()
 		{
 			InitializeComponent();
 		}

@@ -1,6 +1,6 @@
 ﻿namespace BakingSystemUI.Forms
 {
-	partial class UserForm
+	partial class MainForm
 	{
 		/// <summary>
 		/// Required designer variable.
