@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BakingSystemUI.Roles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,5 +22,7 @@ namespace BakingSystemUI.Models
 					throw new InvalidPasswordException("Password includes not enough characters!");
 			} 
 		}
+
+		public UserType UserType { get; set; }
 	}
 }
