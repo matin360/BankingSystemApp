@@ -80,10 +80,10 @@
 			// 
 			this.cmbx_duratoin.FormattingEnabled = true;
 			this.cmbx_duratoin.Items.AddRange(new object[] {
-            "1 year",
-            "2 years",
-            "5 years",
-            "10 years"});
+            "1",
+            "2",
+            "5",
+            "10"});
 			this.cmbx_duratoin.Location = new System.Drawing.Point(97, 54);
 			this.cmbx_duratoin.Name = "cmbx_duratoin";
 			this.cmbx_duratoin.Size = new System.Drawing.Size(185, 21);
@@ -93,9 +93,10 @@
 			// 
 			this.cmbx_type.FormattingEnabled = true;
 			this.cmbx_type.Items.AddRange(new object[] {
-            "Salary Card",
-            "Debet Card",
-            "Scolarship Card"});
+            "Salary",
+            "Debet",
+            "Scolarship",
+            "Credit"});
 			this.cmbx_type.Location = new System.Drawing.Point(97, 86);
 			this.cmbx_type.Name = "cmbx_type";
 			this.cmbx_type.Size = new System.Drawing.Size(185, 21);
