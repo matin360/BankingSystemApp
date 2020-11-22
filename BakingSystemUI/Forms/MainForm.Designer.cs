@@ -37,6 +37,8 @@
 			this.lbl_name = new System.Windows.Forms.Label();
 			this.grbx_settings = new System.Windows.Forms.GroupBox();
 			this.link_settings = new System.Windows.Forms.LinkLabel();
+			this.link_logOut = new System.Windows.Forms.LinkLabel();
+			this.link_refresh = new System.Windows.Forms.LinkLabel();
 			this.grbx_cards.SuspendLayout();
 			this.grbx_user.SuspendLayout();
 			this.grbx_settings.SuspendLayout();
@@ -118,7 +120,7 @@
 			// grbx_settings
 			// 
 			this.grbx_settings.Controls.Add(this.link_settings);
-			this.grbx_settings.Location = new System.Drawing.Point(331, 12);
+			this.grbx_settings.Location = new System.Drawing.Point(331, 162);
 			this.grbx_settings.Name = "grbx_settings";
 			this.grbx_settings.Size = new System.Drawing.Size(200, 100);
 			this.grbx_settings.TabIndex = 4;
@@ -136,11 +138,35 @@
 			this.link_settings.Text = "Settings";
 			this.link_settings.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_settings_LinkClicked);
 			// 
+			// link_logOut
+			// 
+			this.link_logOut.AutoSize = true;
+			this.link_logOut.Location = new System.Drawing.Point(462, 12);
+			this.link_logOut.Name = "link_logOut";
+			this.link_logOut.Size = new System.Drawing.Size(45, 13);
+			this.link_logOut.TabIndex = 5;
+			this.link_logOut.TabStop = true;
+			this.link_logOut.Text = "Log Out";
+			this.link_logOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_logOut_LinkClicked);
+			// 
+			// link_refresh
+			// 
+			this.link_refresh.AutoSize = true;
+			this.link_refresh.Location = new System.Drawing.Point(462, 39);
+			this.link_refresh.Name = "link_refresh";
+			this.link_refresh.Size = new System.Drawing.Size(44, 13);
+			this.link_refresh.TabIndex = 6;
+			this.link_refresh.TabStop = true;
+			this.link_refresh.Text = "Refresh";
+			this.link_refresh.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_refresh_LinkClicked);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(543, 347);
+			this.Controls.Add(this.link_refresh);
+			this.Controls.Add(this.link_logOut);
 			this.Controls.Add(this.grbx_settings);
 			this.Controls.Add(this.grbx_cards);
 			this.Controls.Add(this.grbx_user);
@@ -148,6 +174,7 @@
 			this.Name = "MainForm";
 			this.Text = "UserForm";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.grbx_cards.ResumeLayout(false);
 			this.grbx_cards.PerformLayout();
 			this.grbx_user.ResumeLayout(false);
@@ -155,6 +182,7 @@
 			this.grbx_settings.ResumeLayout(false);
 			this.grbx_settings.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -169,5 +197,7 @@
 		private System.Windows.Forms.Label lbl_name;
 		private System.Windows.Forms.GroupBox grbx_settings;
 		private System.Windows.Forms.LinkLabel link_settings;
+		private System.Windows.Forms.LinkLabel link_logOut;
+		private System.Windows.Forms.LinkLabel link_refresh;
 	}
 }

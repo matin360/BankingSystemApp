@@ -52,6 +52,8 @@
     <Compile Include="Controls\RegLogControl.Designer.cs">
       <DependentUpon>RegLogControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Entity.cs" />
+    <Compile Include="Core\Identificator.cs" />
     <Compile Include="Core\Session.cs" />
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Data\DbSet.cs" />

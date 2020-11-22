@@ -1,4 +1,5 @@
 ﻿using BakingSystemUI.Core;
+using BakingSystemUI.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +37,26 @@ namespace BakingSystemUI.Forms
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Session.LogForm.Close();
+		}
+
+		private void link_logOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			Hide();
+			Session.MainForm = this;
+			Session.LogForm.Show();
+		}
+
+		private void MainForm_Load(object sender, EventArgs e)
+		{
+			User currentUser = Session.User;
+			lbl_name.Text = $"Name: {currentUser.Name}";
+			lbl_surname.Text = $"Surname: {currentUser.Surname}" ;
+			lbl_age.Text = "Age: "+ currentUser.Age;
+		}
+
+		private void link_refresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			MainForm_Load(sender, e);
 		}
 	}
 }
