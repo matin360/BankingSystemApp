@@ -1,4 +1,5 @@
-﻿using BakingSystemUI.Models;
+﻿using BakingSystemUI.Forms;
+using BakingSystemUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace BakingSystemUI.Core
 	{
 		public static User User { get; set; }
 		public static LogForm LogForm { get; set; }
+		public static MainForm MainForm { get;  set; }
 	}
 }
