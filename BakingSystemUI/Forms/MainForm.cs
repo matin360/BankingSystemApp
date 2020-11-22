@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BakingSystemUI.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,26 @@ namespace BakingSystemUI.Forms
 		public MainForm()
 		{
 			InitializeComponent();
+		}
+
+		private void link_settings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			new ConfigureForm().ShowDialog();
+		}
+
+		private void link_myCards_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			new CardsForm().ShowDialog();
+		}
+
+		private void link_order_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			new CardManagerForm().ShowDialog();
+		}
+
+		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Session.LogForm.Close();
 		}
 	}
 }

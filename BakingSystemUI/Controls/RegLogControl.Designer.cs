@@ -66,6 +66,7 @@
 			this.txbx_password.Name = "txbx_password";
 			this.txbx_password.Size = new System.Drawing.Size(157, 20);
 			this.txbx_password.TabIndex = 4;
+			this.txbx_password.UseSystemPasswordChar = true;
 			// 
 			// btn_submit
 			// 

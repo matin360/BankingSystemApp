@@ -16,6 +16,10 @@ namespace BakingSystemUI.Data
 		{
 			Users = new DbSet<User>();
 			Cards = new DbSet<Card>();
+			Users.Add(new User { Email = "matin@gmail.com", Password = "1234567"});
+			Users.Add(new User { Email = "admin@gmail.com", Password = "1234567" });
 		}
+
+
 	}
 }
