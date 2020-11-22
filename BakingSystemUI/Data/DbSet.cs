@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BakingSystemUI.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BakingSystemUI.Data
 {
-	public class DbSet<T>
+	public class DbSet<T> where T : Entity
 	{
 		private List<T> _list;
 		public DbSet()
@@ -24,10 +25,14 @@ namespace BakingSystemUI.Data
 			_list.Remove(item);
 		}
 
-		public void Update(T oldItem, T newItem)
+		public void Update(T item)
 		{
-			_list.Remove(oldItem);
-			_list.Add(newItem);
+			var oldItem = _list.Find(i => i.Id == item.Id);
+			if (oldItem != null)
+			{
+				_list.Remove(oldItem);
+				_list.Add(item);
+			}
 		}
 
 		public IEnumerable<T> GetAll()
