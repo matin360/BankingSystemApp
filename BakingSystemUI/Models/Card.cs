@@ -1,4 +1,5 @@
-﻿using BakingSystemUI.Roles;
+﻿using BakingSystemUI.Core;
+using BakingSystemUI.Roles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace BakingSystemUI.Models
 {
-	public class Card
+	public class Card : Entity
 	{
-		public int Id { get; set; }
 		public BankName Bank { get; set; }
 		public DurationType Duration { get; set; }
 		public CardType CardType { get; set; }
