@@ -9,8 +9,8 @@ namespace BakingSystemUI.Data
 {
 	public class DbContext
 	{
-		public static DbSet<User> Users;
-		public static DbSet<Card> Cards;
+		public DbSet<User> Users;
+		public DbSet<Card> Cards;
 
 		public DbContext()
 		{

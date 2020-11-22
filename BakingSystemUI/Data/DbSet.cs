@@ -34,5 +34,18 @@ namespace BakingSystemUI.Data
 		{
 			return _list;
 		}
+
+		public T FindItem(Func<T, bool> predicate)
+		{
+			T result = default(T);
+			foreach (var item in _list)
+			{
+				if (predicate(item))
+				{
+					result = item;
+				}
+			}
+			return result;
+		}
 	}
 }
