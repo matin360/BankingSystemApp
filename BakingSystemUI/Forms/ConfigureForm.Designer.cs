@@ -29,32 +29,39 @@
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.credentialsControl = new BakingSystemUI.Controls.RegLogControl();
 			this.label4 = new System.Windows.Forms.Label();
-			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.txbx_age = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.txbx_surname = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txbx_name = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.regLogControl1 = new BakingSystemUI.Controls.RegLogControl();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.regLogControl1);
+			this.groupBox1.Controls.Add(this.credentialsControl);
 			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.textBox3);
+			this.groupBox1.Controls.Add(this.txbx_age);
 			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.textBox2);
+			this.groupBox1.Controls.Add(this.txbx_surname);
 			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.textBox1);
+			this.groupBox1.Controls.Add(this.txbx_name);
 			this.groupBox1.Location = new System.Drawing.Point(43, 59);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(223, 378);
 			this.groupBox1.TabIndex = 10;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "User Info";
+			// 
+			// credentialsControl
+			// 
+			this.credentialsControl.Location = new System.Drawing.Point(30, 192);
+			this.credentialsControl.Name = "credentialsControl";
+			this.credentialsControl.Size = new System.Drawing.Size(166, 165);
+			this.credentialsControl.TabIndex = 14;
 			// 
 			// label4
 			// 
@@ -65,12 +72,12 @@
 			this.label4.TabIndex = 13;
 			this.label4.Text = "Age";
 			// 
-			// textBox3
+			// txbx_age
 			// 
-			this.textBox3.Location = new System.Drawing.Point(16, 166);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(190, 20);
-			this.textBox3.TabIndex = 12;
+			this.txbx_age.Location = new System.Drawing.Point(16, 166);
+			this.txbx_age.Name = "txbx_age";
+			this.txbx_age.Size = new System.Drawing.Size(190, 20);
+			this.txbx_age.TabIndex = 12;
 			// 
 			// label3
 			// 
@@ -81,12 +88,12 @@
 			this.label3.TabIndex = 11;
 			this.label3.Text = "Surname";
 			// 
-			// textBox2
+			// txbx_surname
 			// 
-			this.textBox2.Location = new System.Drawing.Point(16, 105);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(190, 20);
-			this.textBox2.TabIndex = 10;
+			this.txbx_surname.Location = new System.Drawing.Point(16, 105);
+			this.txbx_surname.Name = "txbx_surname";
+			this.txbx_surname.Size = new System.Drawing.Size(190, 20);
+			this.txbx_surname.TabIndex = 10;
 			// 
 			// label2
 			// 
@@ -97,12 +104,12 @@
 			this.label2.TabIndex = 9;
 			this.label2.Text = "Name";
 			// 
-			// textBox1
+			// txbx_name
 			// 
-			this.textBox1.Location = new System.Drawing.Point(16, 45);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(190, 20);
-			this.textBox1.TabIndex = 8;
+			this.txbx_name.Location = new System.Drawing.Point(16, 45);
+			this.txbx_name.Name = "txbx_name";
+			this.txbx_name.Size = new System.Drawing.Size(190, 20);
+			this.txbx_name.TabIndex = 8;
 			// 
 			// label1
 			// 
@@ -112,13 +119,6 @@
 			this.label1.Size = new System.Drawing.Size(238, 13);
 			this.label1.TabIndex = 9;
 			this.label1.Text = "Here you can configure your personal information";
-			// 
-			// regLogControl1
-			// 
-			this.regLogControl1.Location = new System.Drawing.Point(19, 192);
-			this.regLogControl1.Name = "regLogControl1";
-			this.regLogControl1.Size = new System.Drawing.Size(166, 165);
-			this.regLogControl1.TabIndex = 14;
 			// 
 			// ConfigureForm
 			// 
@@ -130,6 +130,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "ConfigureForm";
 			this.Text = "ConfigureForm";
+			this.Load += new System.EventHandler(this.ConfigureForm_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
@@ -141,12 +142,12 @@
 
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox txbx_age;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox txbx_surname;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txbx_name;
 		private System.Windows.Forms.Label label1;
-		private Controls.RegLogControl regLogControl1;
+		private Controls.RegLogControl credentialsControl;
 	}
 }
