@@ -35,9 +35,16 @@ namespace BakingSystemUI
 			{
 				Session.User = currentUser;
 				Session.LogForm = this;
-				MessageBox.Show("You successfully logged in!");
-				new MainForm().Show();
-				this.Hide();
+				if (currentUser.UserType == UserType.User)
+				{
+					new MainForm().Show();
+					Hide();
+				}
+				else if(currentUser.UserType == UserType.Admin)
+				{
+					new AdminForm().Show();
+					Hide();
+				}
 			}
 			else
 			{
@@ -57,7 +64,7 @@ namespace BakingSystemUI
 			// register
 			if(dbContext.Users.FindItem(u => u.Email == email) == null)
 			{
-				User user = new User { Email = email, Password = password, UserType = UserType.User };
+				User user = new User { Id = Identificator<User>.GetId(), Email = email, Password = password, UserType = UserType.User };
 				dbContext.Users.Add(user);
 				MessageBox.Show("You successfully registered!");
 			}
