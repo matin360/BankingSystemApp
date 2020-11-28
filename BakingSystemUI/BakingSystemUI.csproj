@@ -93,6 +93,7 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Managers\CardManager.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="Exceptions\InvalidPasswordException.cs" />
     <Compile Include="Models\Person.cs" />

@@ -32,7 +32,6 @@
 			this.txbx_type = new System.Windows.Forms.TextBox();
 			this.txbx_duration = new System.Windows.Forms.TextBox();
 			this.txbx_bank = new System.Windows.Forms.TextBox();
-			this.btn_order = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txbx_expDate = new System.Windows.Forms.TextBox();
@@ -42,9 +41,9 @@
 			this.lbl_cvc = new System.Windows.Forms.Label();
 			this.lbl_cardNumber = new System.Windows.Forms.Label();
 			this.lbl_bank = new System.Windows.Forms.Label();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.dgv_cards = new System.Windows.Forms.DataGridView();
 			this.grbx_card.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgv_cards)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// grbx_card
@@ -52,7 +51,6 @@
 			this.grbx_card.Controls.Add(this.txbx_type);
 			this.grbx_card.Controls.Add(this.txbx_duration);
 			this.grbx_card.Controls.Add(this.txbx_bank);
-			this.grbx_card.Controls.Add(this.btn_order);
 			this.grbx_card.Controls.Add(this.label2);
 			this.grbx_card.Controls.Add(this.label1);
 			this.grbx_card.Controls.Add(this.txbx_expDate);
@@ -64,7 +62,7 @@
 			this.grbx_card.Controls.Add(this.lbl_bank);
 			this.grbx_card.Location = new System.Drawing.Point(496, 13);
 			this.grbx_card.Name = "grbx_card";
-			this.grbx_card.Size = new System.Drawing.Size(288, 271);
+			this.grbx_card.Size = new System.Drawing.Size(288, 236);
 			this.grbx_card.TabIndex = 5;
 			this.grbx_card.TabStop = false;
 			this.grbx_card.Text = "Card";
@@ -92,15 +90,6 @@
 			this.txbx_bank.Name = "txbx_bank";
 			this.txbx_bank.Size = new System.Drawing.Size(185, 20);
 			this.txbx_bank.TabIndex = 7;
-			// 
-			// btn_order
-			// 
-			this.btn_order.Location = new System.Drawing.Point(97, 232);
-			this.btn_order.Name = "btn_order";
-			this.btn_order.Size = new System.Drawing.Size(185, 33);
-			this.btn_order.TabIndex = 3;
-			this.btn_order.Text = "Order";
-			this.btn_order.UseVisualStyleBackColor = true;
 			// 
 			// label2
 			// 
@@ -183,13 +172,13 @@
 			this.lbl_bank.TabIndex = 0;
 			this.lbl_bank.Text = "Bank:";
 			// 
-			// dataGridView1
+			// dgv_cards
 			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(16, 1);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(437, 449);
-			this.dataGridView1.TabIndex = 4;
+			this.dgv_cards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgv_cards.Location = new System.Drawing.Point(0, 12);
+			this.dgv_cards.Name = "dgv_cards";
+			this.dgv_cards.Size = new System.Drawing.Size(490, 438);
+			this.dgv_cards.TabIndex = 4;
 			// 
 			// CardsForm
 			// 
@@ -197,13 +186,13 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(this.grbx_card);
-			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.dgv_cards);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "CardsForm";
 			this.Text = "CardsForm";
 			this.grbx_card.ResumeLayout(false);
 			this.grbx_card.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgv_cards)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -214,7 +203,6 @@
 		private System.Windows.Forms.TextBox txbx_type;
 		private System.Windows.Forms.TextBox txbx_duration;
 		private System.Windows.Forms.TextBox txbx_bank;
-		private System.Windows.Forms.Button btn_order;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txbx_expDate;
@@ -224,6 +212,6 @@
 		private System.Windows.Forms.Label lbl_cvc;
 		private System.Windows.Forms.Label lbl_cardNumber;
 		private System.Windows.Forms.Label lbl_bank;
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView dgv_cards;
 	}
 }

@@ -8,9 +8,9 @@ namespace BakingSystemUI.Roles
 {
 	public enum DurationType
 	{
-		OneYear,
-		TwoYears,
-		FiveYears,
-		TenYears
+		OneYear = 1,
+		TwoYears = 2,
+		FiveYears = 5,
+		TenYears = 10
 	}
 }

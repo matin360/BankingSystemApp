@@ -17,10 +17,14 @@ namespace BakingSystemUI.Data
 		{
 			Users = new DbSet<User>();
 			Cards = new DbSet<Card>();
-			Users.Add(new User { Id = Identificator<User>.GetId(), Email = "matin@gmail.com", Password = "1234567"});
-			Users.Add(new User { Id = Identificator<User>.GetId(), Email = "admin@gmail.com", Password = "1234567" });
+			AddDefaultUsers();
 		}
 
-
+		private void AddDefaultUsers()
+		{
+			Users.Add(new User { Id = Identificator<User>.GetId(), Email = "matin@gmail.com", Password = "1234567", UserType = Roles.UserType.User });
+			Users.Add(new User { Id = Identificator<User>.GetId(), Name = "Ali", Surname = "Rahimzade", Age = 8, Email = "ali@gmail.com", Password = "1234567", UserType = Roles.UserType.User });
+			Users.Add(new User { Id = Identificator<User>.GetId(), Email = "admin@gmail.com", Password = "1234567", UserType = Roles.UserType.Admin});
+		}
 	}
 }

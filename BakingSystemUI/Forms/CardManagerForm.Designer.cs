@@ -75,6 +75,7 @@
 			this.btn_order.TabIndex = 3;
 			this.btn_order.Text = "Order";
 			this.btn_order.UseVisualStyleBackColor = true;
+			this.btn_order.Click += new System.EventHandler(this.btn_order_Click);
 			// 
 			// cmbx_duratoin
 			// 
