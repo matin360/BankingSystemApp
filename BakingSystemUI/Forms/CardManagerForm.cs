@@ -32,6 +32,8 @@ namespace BakingSystemUI.Forms
 			CardManager cardManager = new CardManager(bankName, duration, cardType, Session.User);
 			Card card = cardManager.GetCard();
 
+			Session.Data.Cards.Add(card);
+
 			txbx_cardNumber.Text = card.CardNumber;
 			txbx_cvc.Text = card.CVC.ToString();
 			txbx_expDate.Text = card.ExpiredDate.ToString();

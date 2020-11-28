@@ -64,7 +64,7 @@ namespace BakingSystemUI.Managers
 		private CardType GetCardType()
 		{
 			CardType type = default;
-			switch (_bankName)
+			switch (_cardType)
 			{
 				case "Credit": type = CardType.Credit; break;
 				case "Debet": type = CardType.Debet; break;

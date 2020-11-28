@@ -40,6 +40,17 @@ namespace BakingSystemUI.Data
 			return _list;
 		}
 
+		public IEnumerable<T> GetAllBy(Func<T, bool> predicate)
+		{
+			foreach (var item in _list)
+			{
+				if (predicate(item))
+				{
+					yield return item;
+				}
+			}
+		}
+
 		public T FindItem(Func<T, bool> predicate)
 		{
 			T result = default(T);

@@ -60,7 +60,7 @@
 			this.grbx_card.Controls.Add(this.lbl_cvc);
 			this.grbx_card.Controls.Add(this.lbl_cardNumber);
 			this.grbx_card.Controls.Add(this.lbl_bank);
-			this.grbx_card.Location = new System.Drawing.Point(496, 13);
+			this.grbx_card.Location = new System.Drawing.Point(544, 12);
 			this.grbx_card.Name = "grbx_card";
 			this.grbx_card.Size = new System.Drawing.Size(288, 236);
 			this.grbx_card.TabIndex = 5;
@@ -177,19 +177,21 @@
 			this.dgv_cards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_cards.Location = new System.Drawing.Point(0, 12);
 			this.dgv_cards.Name = "dgv_cards";
-			this.dgv_cards.Size = new System.Drawing.Size(490, 438);
+			this.dgv_cards.Size = new System.Drawing.Size(538, 438);
 			this.dgv_cards.TabIndex = 4;
+			this.dgv_cards.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_cards_CellClick);
 			// 
 			// CardsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(844, 450);
 			this.Controls.Add(this.grbx_card);
 			this.Controls.Add(this.dgv_cards);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "CardsForm";
 			this.Text = "CardsForm";
+			this.Load += new System.EventHandler(this.CardsForm_Load);
 			this.grbx_card.ResumeLayout(false);
 			this.grbx_card.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_cards)).EndInit();
