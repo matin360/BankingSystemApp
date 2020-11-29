@@ -23,7 +23,7 @@ namespace BakingSystemUI.Data
 		}
 		private List<User> defaultUsers = new List<User>
 		{
-			 new User { Id = Identificator<User>.GetId(), Email = "matin@gmail.com", Password = "1234567", UserType = Roles.UserType.User },
+			 new User { Id = Identificator<User>.GetId(), Name = "Matin", Surname = "Manafov", Age = 21, Email = "matin@gmail.com", Password = "1234567", UserType = Roles.UserType.User },
 			new User { Id = Identificator<User>.GetId(), Name = "Ali", Surname = "Rahimzade", Age = 8, Email = "ali@gmail.com", Password = "1234567", UserType = Roles.UserType.User },
 			new User { Id = Identificator<User>.GetId(), Email = "admin@gmail.com", Password = "1234567", UserType = Roles.UserType.Admin }
 		};
@@ -36,6 +36,8 @@ namespace BakingSystemUI.Data
 
 		private void AddDefaultCards()
 		{
+			Cards.Add(new CardManager("Kapital Bank", "2", "Debet", defaultUsers[1]).GetCard());
+			Cards.Add(new CardManager("BTB Bank", "1", "Salary", defaultUsers[0]).GetCard());
 			Cards.Add(new CardManager("Kapital Bank", "2", "Debet", defaultUsers[1]).GetCard());
 			Cards.Add(new CardManager("BTB Bank", "1", "Salary", defaultUsers[0]).GetCard());
 		}
