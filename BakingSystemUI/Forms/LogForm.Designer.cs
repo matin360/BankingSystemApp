@@ -29,8 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.grbx_log = new System.Windows.Forms.GroupBox();
-			this.grbx_reg = new System.Windows.Forms.GroupBox();
 			this.logControl = new BakingSystemUI.Controls.RegLogControl();
+			this.grbx_reg = new System.Windows.Forms.GroupBox();
 			this.regControl = new BakingSystemUI.Controls.RegLogControl();
 			this.grbx_log.SuspendLayout();
 			this.grbx_reg.SuspendLayout();
@@ -46,6 +46,13 @@
 			this.grbx_log.TabStop = false;
 			this.grbx_log.Text = "Login";
 			// 
+			// logControl
+			// 
+			this.logControl.Location = new System.Drawing.Point(42, 46);
+			this.logControl.Name = "logControl";
+			this.logControl.Size = new System.Drawing.Size(166, 165);
+			this.logControl.TabIndex = 1;
+			// 
 			// grbx_reg
 			// 
 			this.grbx_reg.Controls.Add(this.regControl);
@@ -56,19 +63,13 @@
 			this.grbx_reg.TabStop = false;
 			this.grbx_reg.Text = "Register";
 			// 
-			// logControl
-			// 
-			this.logControl.Location = new System.Drawing.Point(42, 46);
-			this.logControl.Name = "logControl";
-			this.logControl.Size = new System.Drawing.Size(166, 165);
-			this.logControl.TabIndex = 1;
-			// 
 			// regControl
 			// 
 			this.regControl.Location = new System.Drawing.Point(41, 46);
 			this.regControl.Name = "regControl";
 			this.regControl.Size = new System.Drawing.Size(166, 165);
 			this.regControl.TabIndex = 0;
+			this.regControl.Load += new System.EventHandler(this.regControl_Load);
 			// 
 			// LogForm
 			// 

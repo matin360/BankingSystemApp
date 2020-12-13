@@ -1,13 +1,15 @@
 ﻿using BakingSystemUI.Core;
+using BakingSystemUI.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using BakingSystemUI.Roles;
+using System.Configuration;
+using BakingSystemUI.Data;
 
 namespace BakingSystemUI.Forms
 {
@@ -32,17 +34,22 @@ namespace BakingSystemUI.Forms
 
 		private void link_cards_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			dgv_data.DataSource = Session.Data.Cards.GetAll()
-						.Select(card => new { card.Id, card.CalrdHolder, card.CardNumber, card.CardType, card.Bank, card.CVC, card.ExpiredDate })
-							.ToList();
+			//dgv_data.DataSource = Session.Data.Cards.GetAll()
+			//			.Select(card => new { card.Id, card.CalrdHolder, card.CardNumber, card.CardType, card.Bank, card.CVC, card.ExpiredDate })
+			//				.ToList();
+
 		}
 
 		private void link_users_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			dgv_data.DataSource = Session.Data.Users.GetAll()
-				.Where(user => user.UserType == Roles.UserType.User)
-					.Select(user => new { user.Id, FullName = $"{user.Name} {user.Surname}", user.Age, user.Email})
-						.ToList();
+			//dgv_data.DataSource = Session.Data.Users.GetAll()
+			//	.Where(user => user.UserType == Roles.UserType.User)
+			//		.Select(user => new { user.Id, FullName = $"{user.Name} {user.Surname}", user.Age, user.Email})
+			//			.ToList();
+			using (DatabaseManager databaseManager = new DatabaseManager("myDB"))
+			{
+				dgv_data.DataSource = databaseManager.GetUsers().ToList();
+			}
 		}
 
 		private void AdminForm_Load(object sender, EventArgs e)

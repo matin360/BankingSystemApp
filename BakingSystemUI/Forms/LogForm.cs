@@ -74,6 +74,11 @@ namespace BakingSystemUI
 				MessageBox.Show("This user already exists!");
 			}
 		}
+
+		private void regControl_Load(object sender, EventArgs e)
+		{
+
+		}
 	}
 
 }
