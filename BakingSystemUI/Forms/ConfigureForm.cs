@@ -18,8 +18,11 @@ namespace BakingSystemUI.Forms
 
 		private void btn_updateUser(object sender, EventArgs e)
 		{
-			UpdateUser(Session.User);
-			MessageBox.Show("User updated!");
+			int aRows = UpdateUser(Session.User);
+			if (aRows > 0)
+				MessageBox.Show("User updated!");
+			else
+				MessageBox.Show("Update failed!");
 		}
 		private void ConfigureForm_Load(object sender, EventArgs e)
 		{
@@ -34,15 +37,23 @@ namespace BakingSystemUI.Forms
 			credentialsControl.txbx_email.Text = user.Email;
 			credentialsControl.txbx_password.Text = user.Password;
 		}
-		private void UpdateUser(User user)
+		private int UpdateUser(User user)
 		{
+			int affectedRows = 0;
 			user.Name = txbx_name.Text;
 			user.Surname = txbx_surname.Text;
 			user.Age = byte.Parse(txbx_age.Text);
 			user.Email = credentialsControl.txbx_email.Text;
 			user.Password = credentialsControl.txbx_password.Text;
-			DbContext db = Session.Data;
-			db.Users.Update(user);
+
+			// validate data: homework
+
+			using(DatabaseManager db = new DatabaseManager("myDB"))
+			{
+				affectedRows = db.UpdateUser(user);
+			}
+
+			return affectedRows;
 		}
 	}
 }

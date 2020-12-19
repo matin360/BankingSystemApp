@@ -1,4 +1,5 @@
 ﻿using BakingSystemUI.Core;
+using BakingSystemUI.Data;
 using BakingSystemUI.Managers;
 using BakingSystemUI.Models;
 using System;
@@ -32,7 +33,10 @@ namespace BakingSystemUI.Forms
 			CardManager cardManager = new CardManager(bankName, duration, cardType, Session.User);
 			Card card = cardManager.GetCard();
 
-			Session.Data.Cards.Add(card);
+			using(DatabaseManager db = new DatabaseManager("myDB"))
+			{
+				db.AddCard(card);
+			}
 
 			txbx_cardNumber.Text = card.CardNumber;
 			txbx_cvc.Text = card.CVC.ToString();

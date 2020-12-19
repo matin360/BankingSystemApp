@@ -4,13 +4,14 @@ using BakingSystemUI.Forms;
 using BakingSystemUI.Models;
 using BakingSystemUI.Roles;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace BakingSystemUI
 {
 	public partial class LogForm : Form
 	{
-		private readonly DbContext dbContext;
 		public LogForm()
 		{
 			InitializeComponent();
@@ -18,8 +19,6 @@ namespace BakingSystemUI
 			logControl.btn_submit.Text = "Login";
 			regControl.btn_submit.Click += btn_register_clicked;
 			logControl.btn_submit.Click += btn_login_clicked;
-			dbContext = new DbContext();
-			Session.Data = dbContext;
 		}
 
 		private void btn_login_clicked(object sender, EventArgs e)
@@ -27,11 +26,16 @@ namespace BakingSystemUI
 			// get data
 			string
 				email = logControl.txbx_email.Text,
-				password = regControl.txbx_password.Text;
+				password = logControl.txbx_password.Text;
 			// validate data
 
 			// check data - database
-			User currentUser = dbContext.Users.FindItem(u => u.Email == email);
+			List<User> users = null;
+			using (DatabaseManager db = new DatabaseManager("myDB"))
+			{
+				users = (List<User>)db.GetUsers();
+			}
+			User currentUser = users.Find(user => user.Email == email && user.Password == password);
 			if (currentUser != null)
 			{
 				Session.User = currentUser;
@@ -62,12 +66,29 @@ namespace BakingSystemUI
 				password = regControl.txbx_password.Text;
 			// validate data
 
-			// register
-			if(dbContext.Users.FindItem(u => u.Email == email) == null)
+			List<User> users = null;
+			using (DatabaseManager db = new DatabaseManager("myDB"))
 			{
-				User user = new User { Id = Identificator<User>.GetId(), Email = email, Password = password, UserType = UserType.User };
-				dbContext.Users.Add(user);
-				MessageBox.Show("You successfully registered!");
+				users = (List<User>)db.GetUsers();
+			}
+			// register
+			if(!users.Any( u => u.Email == email))
+			{
+				int aRows = default;
+				User user = new User {Name = string.Empty, Surname = string.Empty, Age = default, Email = email, Password = password, UserType = UserType.User };
+				using (DatabaseManager db = new DatabaseManager("myDB"))
+				{
+					aRows = db.AddUser(user);
+				}
+
+				if (aRows > 0)
+				{
+					MessageBox.Show("You successfully registered!");
+				}
+				else
+				{
+					MessageBox.Show("Registration failed!");
+				}
 			}
 			else
 			{

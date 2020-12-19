@@ -1,4 +1,5 @@
 ﻿using BakingSystemUI.Core;
+using BakingSystemUI.Data;
 using BakingSystemUI.Models;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,13 @@ namespace BakingSystemUI.Forms
 		private void CardsForm_Load(object sender, EventArgs e)
 		{
 			// get all cards by User's Id
-			dgv_cards.DataSource = Session.Data.Cards.GetAllBy(card => card.CardHolderId == Session.User.Id)
-									.Select(card => new { card.Id, card.CalrdHolder, card.CardNumber, card.CardType, card.Bank, card.CVC, card.ExpiredDate })
-										.ToList();
+			//dgv_cards.DataSource = Session.Data.Cards.GetAllBy(card => card.CardHolderId == Session.User.Id)
+			//						.Select(card => new { card.Id, card.CalrdHolder, card.CardNumber, card.CardType, card.Bank, card.CVC, card.ExpiredDate })
+			//							.ToList();
+			using (DatabaseManager db = new DatabaseManager("myDB"))
+			{
+				db.GetCards();
+			}
 		}
 
 		private void dgv_cards_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -34,7 +39,11 @@ namespace BakingSystemUI.Forms
 			int idColumn = default;
 			if (int.TryParse(dgv[e.ColumnIndex, e.RowIndex].Value.ToString(), out idColumn))
 			{
-				Card card = Session.Data.Cards.FindItem(c => c.Id == idColumn);
+				Card card = null;
+				using (DatabaseManager db = new DatabaseManager("myDB"))
+				{
+					card = db.GetCardById(idColumn);
+				}
 
 				txbx_bank.Text = card.Bank.ToString();
 				txbx_cardNumber.Text = card.CardNumber.ToString();
