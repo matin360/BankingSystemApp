@@ -21,14 +21,13 @@ namespace BakingSystemUI.Forms
 		}
 
 		private void CardsForm_Load(object sender, EventArgs e)
-		{
-			// get all cards by User's Id
-			//dgv_cards.DataSource = Session.Data.Cards.GetAllBy(card => card.CardHolderId == Session.User.Id)
-			//						.Select(card => new { card.Id, card.CalrdHolder, card.CardNumber, card.CardType, card.Bank, card.CVC, card.ExpiredDate })
-			//							.ToList();
+		{			
 			using (DatabaseManager db = new DatabaseManager("myDB"))
 			{
-				db.GetCards();
+				dgv_cards.DataSource = db.GetCardsByUserId(Session.User.Id)
+					.Select(card => new { card.Id, card.CalrdHolder, card.CardNumber, card.CardType, card.Bank, card.CVC, card.ExpiredDate })
+										.ToList();
+
 			}
 		}
 
@@ -42,7 +41,7 @@ namespace BakingSystemUI.Forms
 				Card card = null;
 				using (DatabaseManager db = new DatabaseManager("myDB"))
 				{
-					card = db.GetCardById(idColumn);
+					card = db.GetCardsById(idColumn).ToList()[0];
 				}
 
 				txbx_bank.Text = card.Bank.ToString();
@@ -51,6 +50,7 @@ namespace BakingSystemUI.Forms
 				txbx_duration.Text = card.Duration.ToString();
 				txbx_expDate.Text = card.ExpiredDate.ToString();
 				txbx_type.Text = card.CardType.ToString();
+				txbx_balance.Text = card.Balance.ToString();
 			}
 		}
 	}

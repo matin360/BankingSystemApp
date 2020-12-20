@@ -100,7 +100,8 @@ namespace BakingSystemUI.Managers
 				CardType = GetCardType(),
 				CardNumber = GetCardNumber(),
 				CalrdHolder = $"{_user.Name} {_user.Surname}",
-				CardHolderId = _user.Id
+				CardHolderId = _user.Id,
+				Balance = 0
 			};
 		}
 	}

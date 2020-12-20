@@ -33,22 +33,20 @@ namespace BakingSystemUI.Forms
 		}
 
 		private void link_cards_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			//dgv_data.DataSource = Session.Data.Cards.GetAll()
-			//			.Select(card => new { card.Id, card.CalrdHolder, card.CardNumber, card.CardType, card.Bank, card.CVC, card.ExpiredDate })
-			//				.ToList();
-			
+		{	
+			using (DatabaseManager databaseManager = new DatabaseManager("myDB"))
+			{
+				dgv_data.DataSource = databaseManager.GetCards()
+						.Select(card => new { card.Id, card.CalrdHolder, card.CardNumber, card.CardType, card.Bank, card.CVC, card.ExpiredDate })
+							.ToList();
+			}
 		}
 
 		private void link_users_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			//dgv_data.DataSource = Session.Data.Users.GetAll()
-			//	.Where(user => user.UserType == Roles.UserType.User)
-			//		.Select(user => new { user.Id, FullName = $"{user.Name} {user.Surname}", user.Age, user.Email})
-			//			.ToList();
 			using (DatabaseManager databaseManager = new DatabaseManager("myDB"))
 			{
-				dgv_data.DataSource = databaseManager.GetUsers().ToList();
+				dgv_data.DataSource = databaseManager.GetUsers().Where(u => u.UserType == UserType.User).ToList();
 			}
 		}
 

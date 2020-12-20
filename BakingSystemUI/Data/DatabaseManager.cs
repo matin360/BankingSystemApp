@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using BakingSystemUI.Models;
+using BakingSystemUI.Roles;
 
 namespace BakingSystemUI.Data
 {
@@ -36,24 +37,21 @@ namespace BakingSystemUI.Data
 			return affectedRows;
 		}
 
-		public void GetCards()
-		{
-			
-		}
-
 		public int AddCard(Card card)
 		{
-			return IUD_command("INSERT INTO Cards...", com =>
+			return IUD_command("INSERT INTO Cards(Number, CVC, Bank, Type, Duration, CardHolder, ExpireDate, Balance, UserId) VALUES(@n, @cvc, @b, @t, @d, @ch, @ed, @bl, @uid)", com =>
 			{
-
+				com.Parameters.AddWithValue("@n", card.CardNumber);
+				com.Parameters.AddWithValue("@cvc", card.CVC);
+				com.Parameters.AddWithValue("@b", card.Bank.ToString());
+				com.Parameters.AddWithValue("@t", card.CardType.ToString());
+				com.Parameters.AddWithValue("@d", card.Duration);
+				com.Parameters.AddWithValue("@ch", card.CalrdHolder);
+				com.Parameters.AddWithValue("@ed", card.ExpiredDate);
+				com.Parameters.AddWithValue("@bl", card.Balance);
+				com.Parameters.AddWithValue("@uid", card.CardHolderId);
 			});
 		}
-
-		public Card GetCardById(int idColumn)
-		{
-
-		}
-
 		public int AddUser(User user)
 		{
 			return IUD_command("INSERT INTO Users(Name, Surname, Age, Email, Password, UserType) VALUES(@n, @s, @a, @e, @ps, @ut)", sqlCommand => {
@@ -84,13 +82,59 @@ namespace BakingSystemUI.Data
 			});
 		}
 
-		public IEnumerable<User> GetUsers()
+		private IEnumerable<Card> _GetCards(string query, Action<SqlCommand> action)
+		{
+			List<Card> items = new List<Card>(); // response from server
+			using (SqlCommand sqlCommand = new SqlCommand(query, _sqlConn))
+			{
+				action(sqlCommand);
+				using (SqlDataReader dataReader = sqlCommand.ExecuteReader())
+				{
+					while (dataReader.Read())
+					{
+						items.Add(new Card
+						{
+							Id = Convert.ToInt32(dataReader["Id"]),
+							Bank = (BankName)Enum.Parse(typeof(BankName), dataReader["Bank"].ToString()),
+							CVC = Convert.ToInt16(dataReader["CVC"]),
+							ExpiredDate = (DateTime)dataReader["ExpireDate"],
+							Duration = (DurationType)Enum.Parse(typeof(DurationType), dataReader["Duration"].ToString()),
+							CardType = (CardType)Enum.Parse(typeof(CardType), dataReader["Type"].ToString()),
+							CardNumber = dataReader["Number"].ToString(),
+							CalrdHolder = dataReader["CardHolder"].ToString(),
+							CardHolderId = Convert.ToInt32(dataReader["UserId"]),
+							Balance = Convert.ToDecimal(dataReader["Balance"])
+						});
+					}
+				}
+			}
+			return items;
+		}
+		public IEnumerable<Card> GetCards()
+		{
+			return _GetCards("SELECT Id, Number, CVC, Bank, Type, CardHolder, ExpireDate, Duration, Balance, UserId FROM Cards", (com) => { });
+		}
+
+		public IEnumerable<Card> GetCardsById(int idColumn)
+		{
+			return _GetCards("SELECT Id, Number, CVC, Bank, Type, CardHolder, ExpireDate, Balance, Duration, UserId FROM Cards WHERE Id=@id", (com) => {
+				com.Parameters.AddWithValue("@id", idColumn);
+			});
+		}
+
+		public IEnumerable<Card> GetCardsByUserId(int id)
+		{
+			return _GetCards("SELECT Id, Number, CVC, Bank, Type, CardHolder, ExpireDate, Balance, Duration, UserId FROM Cards WHERE UserId=@id", (com) => {
+				com.Parameters.AddWithValue("@id", id);
+			});
+		}
+
+		private IEnumerable<User> _GetUsers(string query, Action<SqlCommand> action)
 		{
 			List<User> users = new List<User>(); // response from server
-			string command = "SELECT Id, Name, Surname, Age, Email, Password FROM Users;";
-			using (SqlCommand sqlCommand = new SqlCommand(command))
+			using (SqlCommand sqlCommand = new SqlCommand(query, _sqlConn))
 			{
-				sqlCommand.Connection = _sqlConn;
+				action(sqlCommand);
 				using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
 				{
 					while (sqlDataReader.Read())
@@ -103,11 +147,17 @@ namespace BakingSystemUI.Data
 							Age = Convert.ToByte(sqlDataReader["Age"]),
 							Email = sqlDataReader["Email"].ToString(),
 							Password = sqlDataReader["Password"].ToString(),
+							UserType = (UserType)Enum.Parse(typeof(UserType), sqlDataReader["UserType"].ToString())
 						});
 					}
 				}
 			}
 			return users;
+		}
+
+		public IEnumerable<User> GetUsers()
+		{
+			return _GetUsers("SELECT Id, Name, Surname, Age, Email, Password, UserType FROM Users", com => { });
 		}
 
 		// homework: GetCards, AddCard, DeleteCard, GetCardById

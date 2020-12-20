@@ -16,6 +16,7 @@ namespace BakingSystemUI.Models
 		public string CardNumber { get; set; }
 		public short CVC { get; set; }
 		public DateTime ExpiredDate { get; set; }
+		public decimal Balance { get; set; }
 		public string CalrdHolder { get; set; }
 		public int CardHolderId { get; set; }
 	}

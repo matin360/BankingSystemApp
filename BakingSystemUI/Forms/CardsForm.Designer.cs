@@ -42,12 +42,16 @@
 			this.lbl_cardNumber = new System.Windows.Forms.Label();
 			this.lbl_bank = new System.Windows.Forms.Label();
 			this.dgv_cards = new System.Windows.Forms.DataGridView();
+			this.txbx_balance = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.grbx_card.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv_cards)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// grbx_card
 			// 
+			this.grbx_card.Controls.Add(this.txbx_balance);
+			this.grbx_card.Controls.Add(this.label3);
 			this.grbx_card.Controls.Add(this.txbx_type);
 			this.grbx_card.Controls.Add(this.txbx_duration);
 			this.grbx_card.Controls.Add(this.txbx_bank);
@@ -62,7 +66,7 @@
 			this.grbx_card.Controls.Add(this.lbl_bank);
 			this.grbx_card.Location = new System.Drawing.Point(544, 12);
 			this.grbx_card.Name = "grbx_card";
-			this.grbx_card.Size = new System.Drawing.Size(288, 236);
+			this.grbx_card.Size = new System.Drawing.Size(288, 259);
 			this.grbx_card.TabIndex = 5;
 			this.grbx_card.TabStop = false;
 			this.grbx_card.Text = "Card";
@@ -181,6 +185,23 @@
 			this.dgv_cards.TabIndex = 4;
 			this.dgv_cards.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_cards_CellClick);
 			// 
+			// txbx_balance
+			// 
+			this.txbx_balance.Enabled = false;
+			this.txbx_balance.Location = new System.Drawing.Point(97, 233);
+			this.txbx_balance.Name = "txbx_balance";
+			this.txbx_balance.Size = new System.Drawing.Size(185, 20);
+			this.txbx_balance.TabIndex = 11;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(12, 233);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(49, 13);
+			this.label3.TabIndex = 10;
+			this.label3.Text = "Balance:";
+			// 
 			// CardsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,5 +236,7 @@
 		private System.Windows.Forms.Label lbl_cardNumber;
 		private System.Windows.Forms.Label lbl_bank;
 		private System.Windows.Forms.DataGridView dgv_cards;
+		private System.Windows.Forms.TextBox txbx_balance;
+		private System.Windows.Forms.Label label3;
 	}
 }
