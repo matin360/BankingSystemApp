@@ -12,6 +12,7 @@ namespace BakingSystemUI
 {
 	public partial class LogForm : Form
 	{
+		private List<User> users;
 		public LogForm()
 		{
 			InitializeComponent();
@@ -30,7 +31,6 @@ namespace BakingSystemUI
 			// validate data
 
 			// check data - database
-			List<User> users = null;
 			using (DatabaseManager db = new DatabaseManager("myDB"))
 			{
 				users = (List<User>)db.GetUsers();
@@ -65,8 +65,6 @@ namespace BakingSystemUI
 				email = regControl.txbx_email.Text,
 				password = regControl.txbx_password.Text;
 			// validate data
-
-			List<User> users = null;
 			using (DatabaseManager db = new DatabaseManager("myDB"))
 			{
 				users = (List<User>)db.GetUsers();

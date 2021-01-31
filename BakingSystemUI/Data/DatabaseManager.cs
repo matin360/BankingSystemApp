@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using BakingSystemUI.Models;
 using BakingSystemUI.Roles;
+using System.Data;
 
 namespace BakingSystemUI.Data
 {
@@ -54,7 +55,8 @@ namespace BakingSystemUI.Data
 		}
 		public int AddUser(User user)
 		{
-			return IUD_command("INSERT INTO Users(Name, Surname, Age, Email, Password, UserType) VALUES(@n, @s, @a, @e, @ps, @ut)", sqlCommand => {
+			return IUD_command("usp_addUser", sqlCommand => {
+				 sqlCommand.CommandType = CommandType.StoredProcedure;
 				 sqlCommand.Parameters.AddWithValue("@n", user.Name);
 				 sqlCommand.Parameters.AddWithValue("@s", user.Surname);
 				 sqlCommand.Parameters.AddWithValue("@a", user.Age);
@@ -63,10 +65,10 @@ namespace BakingSystemUI.Data
 				 sqlCommand.Parameters.AddWithValue("@ut", user.UserType.ToString());
 			 });
 		}
-
 		public int UpdateUser(User user)
 		{
-			return IUD_command("UPDATE Users SET Name=@n, Surname=@s, Age=@a, Password=@ps WHERE Id=@id", sqlCommand => {
+			return IUD_command("usp_updateUser", sqlCommand => {
+				sqlCommand.CommandType = CommandType.StoredProcedure;
 				sqlCommand.Parameters.AddWithValue("@n", user.Name);
 				sqlCommand.Parameters.AddWithValue("@s", user.Surname);
 				sqlCommand.Parameters.AddWithValue("@a", user.Age);
@@ -74,10 +76,10 @@ namespace BakingSystemUI.Data
 				sqlCommand.Parameters.AddWithValue("@id", user.Id);
 			});
 		}
-
 		public int DeleteUser(User user)
 		{
-			return IUD_command("DELETE Users WHERE Id=@id", sqlCommand => {
+			return IUD_command("usp_deleteUser", sqlCommand => {
+				sqlCommand.CommandType = CommandType.StoredProcedure;
 				sqlCommand.Parameters.AddWithValue("@id", user.Id);
 			});
 		}
@@ -112,12 +114,32 @@ namespace BakingSystemUI.Data
 		}
 		public IEnumerable<Card> GetCards()
 		{
-			return _GetCards("SELECT Id, Number, CVC, Bank, Type, CardHolder, ExpireDate, Duration, Balance, UserId FROM Cards", (com) => { });
+			return _GetCards(@"SELECT [Id]
+									  ,[Number]
+									  ,[CVC]
+									  ,[Bank]
+									  ,[Type]
+									  ,[Duration]
+									  ,[CardHolder]
+									  ,[ExpireDate]
+									  ,[Balance]
+									  ,[UserId]
+								  FROM [dbo].[uv_CardsData]", (com) => { });
 		}
 
 		public IEnumerable<Card> GetCardsById(int idColumn)
 		{
-			return _GetCards("SELECT Id, Number, CVC, Bank, Type, CardHolder, ExpireDate, Balance, Duration, UserId FROM Cards WHERE Id=@id", (com) => {
+			return _GetCards(@"SELECT [Id]
+									  ,[Number]
+									  ,[CVC]
+									  ,[Bank]
+									  ,[Type]
+									  ,[Duration]
+									  ,[CardHolder]
+									  ,[ExpireDate]
+									  ,[Balance]
+									  ,[UserId] 
+							FROM [dbo].[ufn_GetCardsById](@id);", (com) => {
 				com.Parameters.AddWithValue("@id", idColumn);
 			});
 		}
@@ -126,9 +148,20 @@ namespace BakingSystemUI.Data
 		{
 			return _GetCards("SELECT Id, Number, CVC, Bank, Type, CardHolder, ExpireDate, Balance, Duration, UserId FROM Cards WHERE UserId=@id", (com) => {
 				com.Parameters.AddWithValue("@id", id);
-			});
+			}); // homework: create function in sql
 		}
 
+		public IEnumerable<User> GetUsers()
+		{
+			return _GetUsers(@"SELECT [Id]
+									,[Name]
+									,[Surname]
+									,[Age]
+									,[Email]
+									,[Password]
+									,[UserType]
+								FROM[dbo].[uv_UsersData]", com => { });
+		}
 		private IEnumerable<User> _GetUsers(string query, Action<SqlCommand> action)
 		{
 			List<User> users = new List<User>(); // response from server
@@ -155,11 +188,6 @@ namespace BakingSystemUI.Data
 			return users;
 		}
 
-		public IEnumerable<User> GetUsers()
-		{
-			return _GetUsers("SELECT Id, Name, Surname, Age, Email, Password, UserType FROM Users", com => { });
-		}
-
-		// homework: GetCards, AddCard, DeleteCard, GetCardById
+		
 	}
 }
