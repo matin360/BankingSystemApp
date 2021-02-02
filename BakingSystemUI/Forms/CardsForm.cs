@@ -38,19 +38,23 @@ namespace BakingSystemUI.Forms
 			int idColumn = default;
 			if (int.TryParse(dgv[e.ColumnIndex, e.RowIndex].Value.ToString(), out idColumn))
 			{
-				Card card = null;
-				using (DatabaseManager db = new DatabaseManager("myDB"))
-				{
-					card = db.GetCardsById(idColumn).ToList()[0];
-				}
+					Card card = null;
+					using (DatabaseManager db = new DatabaseManager("myDB"))
+					{
+						if(db.GetUsers().Any( c => c.Id == idColumn))
+						{
+							card = db.GetCardsById(idColumn).FirstOrDefault();
+						}
+							
+					}
 
-				txbx_bank.Text = card.Bank.ToString();
-				txbx_cardNumber.Text = card.CardNumber.ToString();
-				txbx_cvc.Text = card.CVC.ToString();
-				txbx_duration.Text = card.Duration.ToString();
-				txbx_expDate.Text = card.ExpiredDate.ToString();
-				txbx_type.Text = card.CardType.ToString();
-				txbx_balance.Text = card.Balance.ToString();
+					txbx_bank.Text = card.Bank.ToString();
+					txbx_cardNumber.Text = card.CardNumber.ToString();
+					txbx_cvc.Text = card.CVC.ToString();
+					txbx_duration.Text = card.Duration.ToString();
+					txbx_expDate.Text = card.ExpiredDate.ToString();
+					txbx_type.Text = card.CardType.ToString();
+					txbx_balance.Text = card.Balance.ToString();
 			}
 		}
 	}

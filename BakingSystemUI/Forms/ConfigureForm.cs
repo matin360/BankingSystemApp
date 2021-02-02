@@ -42,7 +42,7 @@ namespace BakingSystemUI.Forms
 			int affectedRows = 0;
 			user.Name = txbx_name.Text;
 			user.Surname = txbx_surname.Text;
-			user.Age = byte.Parse(txbx_age.Text);
+			user.Age = new Validation.Validator().IsAgeValueValid(txbx_age.Text, 0);
 			user.Email = credentialsControl.txbx_email.Text;
 			user.Password = credentialsControl.txbx_password.Text;
 
