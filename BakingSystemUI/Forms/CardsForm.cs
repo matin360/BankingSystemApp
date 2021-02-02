@@ -41,13 +41,14 @@ namespace BakingSystemUI.Forms
 					Card card = null;
 					using (DatabaseManager db = new DatabaseManager("myDB"))
 					{
-						if(db.GetUsers().Any( c => c.Id == idColumn))
+						if(db.GetCards().Any( c => c.Id == idColumn))
 						{
 							card = db.GetCardsById(idColumn).FirstOrDefault();
 						}
 							
 					}
-
+				if (card != null)
+				{
 					txbx_bank.Text = card.Bank.ToString();
 					txbx_cardNumber.Text = card.CardNumber.ToString();
 					txbx_cvc.Text = card.CVC.ToString();
@@ -55,7 +56,9 @@ namespace BakingSystemUI.Forms
 					txbx_expDate.Text = card.ExpiredDate.ToString();
 					txbx_type.Text = card.CardType.ToString();
 					txbx_balance.Text = card.Balance.ToString();
+				}
 			}
+					
 		}
 	}
 }

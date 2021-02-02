@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
-using BakingSystemUI.
+using BakingSystemUI;
 using BakingSystemUI.Validation;
 
 namespace BakingSystemUI
@@ -80,51 +80,54 @@ namespace BakingSystemUI
 
 		private void btn_register_clicked(object sender, EventArgs e)
 		{
-			// get data
-			string
-				email = regControl.txbx_email.Text,
-				password = regControl.txbx_password.Text;
-			// validate data
 			try
 			{
+				// get data
+				string
+				email = regControl.txbx_email.Text,
+				password = regControl.txbx_password.Text;
+				// validate data
+			
 				validator.IsEmailValid(email);
 				validator.IsPasswordValid(password);
-			} 
-			catch(InvalidEmailException exp)
-			{
-				MessageBox.Show(exp.Message);
-			}
-			catch(InvalidPasswordException exp)
-			{
-				MessageBox.Show(exp.Message);
-			}
 
-			using (DatabaseManager db = new DatabaseManager("myDB"))
-			{
-				users = (List<User>)db.GetUsers();
-			}
-			// register
-			if(!users.Any( u => u.Email == email))
-			{
-				int aRows = default;
-				User user = new User {Name = string.Empty, Surname = string.Empty, Age = default, Email = email, Password = password, UserType = UserType.User };
+
+
 				using (DatabaseManager db = new DatabaseManager("myDB"))
 				{
-					aRows = db.AddUser(user);
+					users = (List<User>)db.GetUsers();
 				}
-
-				if (aRows > 0)
+				// register
+				if (!users.Any(u => u.Email == email))
 				{
-					MessageBox.Show("You successfully registered!");
+					int aRows = default;
+					User user = new User { Name = string.Empty, Surname = string.Empty, Age = default, Email = email, Password = password, UserType = UserType.User };
+					using (DatabaseManager db = new DatabaseManager("myDB"))
+					{
+						aRows = db.AddUser(user);
+					}
+
+					if (aRows > 0)
+					{
+						MessageBox.Show("You successfully registered!");
+					}
+					else
+					{
+						MessageBox.Show("Registration failed!");
+					}
 				}
 				else
 				{
-					MessageBox.Show("Registration failed!");
+					MessageBox.Show("This user already exists!");
 				}
 			}
-			else
+			catch (InvalidEmailException exp)
 			{
-				MessageBox.Show("This user already exists!");
+				MessageBox.Show(exp.Message);
+			}
+			catch (InvalidPasswordException exp)
+			{
+				MessageBox.Show(exp.Message);
 			}
 		}
 
